@@ -1,0 +1,1 @@
+const myArr: number[] = [1,2,3]
