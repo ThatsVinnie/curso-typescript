@@ -96,3 +96,12 @@ const user: NonNullable<User2> = {
 
 //Record
 
+
+type Midias = "facebook" | "instagram"
+
+type Url = { url: string}
+
+const midias: Record<Midias, Url> = {
+    facebook: { url: "facebook.com"},
+    instagram: { url: "instagram.com"}
+}
