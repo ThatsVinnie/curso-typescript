@@ -105,3 +105,55 @@ const midias: Record<Midias, Url> = {
     facebook: { url: "facebook.com"},
     instagram: { url: "instagram.com"}
 }
+
+// Conditional types
+
+type MyString = string
+
+type MyType = MyString extends string | number ? string : boolean
+
+function myFn<T>(param: T extends string ? string : number){
+
+}
+
+myFn<number>(2)
+
+
+function myFn2<T>(param: T){
+    return function(param2: T extends number ? boolean : MyString){
+
+    }
+}
+
+const _myFn = myFn2("")
+
+type NumberOrNever<T> = T extends number ? number : never
+
+//const teste: NumberOrNever<boolean> = 2
+
+
+//KeyOf
+
+let OnePropOfSquare: keyof Square = 'width'
+
+
+//mapped types
+
+type Props = "x"| "y"| "z"
+
+type MappedProps = {
+    [P in Props] : number
+}
+
+type MappedProps2<T extends string | number> = {
+    [P in T]: P
+}
+
+
+type MyMappedType = MappedProps2<Props>
+
+type MappedProps3<T> = {
+    readonly [P in keyof T]: T[P]
+}
+
+type Teste = MappedProps3<{a: boolean, b: "b"}>
